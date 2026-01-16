@@ -1,21 +1,47 @@
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://www.youtube.com/watch?v=xvFZjo5PgG0)
+
 # Inventory Overlay
 
-A lightweight Minecraft mod for the Fabric Loader that renders your main inventory slots on the HUD.
+![Mod Icon](src/main/resources/assets/inventoryoverlay/icon.png)
 
-## 🚀 Features
-- **Always Visible:** Keep track of your items without opening your inventory screen.
-- **Dynamic Anchoring:** Snap the overlay to the edges or center of your screen.
-- **Fine-tuning:** Adjust X/Y offsets and background transparency.
-- **Toggleable:** Default keybind `I` to hide/show the UI instantly.
+## Functionality
 
-## 🛠️ Requirements
-- [Fabric Loader](https://fabricmc.net/)
-- [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api)
-- [Cloth Config API](https://www.curseforge.com/minecraft/mc-mods/cloth-config)
-- [Mod Menu](https://www.curseforge.com/minecraft/mc-mods/modmenu) (Optional, but required to access the config screen)
+* **Real-time HUD Display:** View all 27 slots of your main inventory (excluding hotbar) directly on your screen.
+* **Custom Positioning:** Use the built-in anchor system to snap the overlay to the corners or center of your screen.
+* **Dynamic Offsets:** Fine-tune the exact position with X and Y pixel offsets.
+* **Adjustable Transparency:** Change the background opacity (0-100%) to ensure it doesn't block your view.
+* **Quick Toggle:** Instantly show or hide the overlay with a customizable hotkey (Default: `I`).
 
-## ⚙️ Configuration
-The mod uses **Cloth Config** and **AutoConfig** for a seamless settings experience. Access the settings via Mod Menu to change:
-- **Anchors:** Change the screen origin point.
-- **Offsets:** Move the overlay relative to the anchor.
-- **Alpha:** Set the background opacity (0-100%).
+## Benefits
+Managing resources while adventuring or building can be tedious. This mod provides several key benefits:
+
+* **Efficiency:** Monitor block counts and resource levels while actively mining or building.
+* **Safety:** Keep an eye on your inventory while in combat or dangerous areas where opening a full-screen GUI would leave you vulnerable.
+* **Highly Customizable:** Whether you want a faint ghost-overlay in the corner or a solid display in the center, the configuration fits your playstyle.
+* **Vanilla Feel:** Uses standard Minecraft item rendering and GUI textures to blend perfectly with the game's aesthetic.
+
+## Installation
+
+### Prerequisites
+* **Minecraft:** 1.21.10
+* **Loader:** [Fabric Loader](https://fabricmc.net/use/installer/) (>=0.18.4)
+* **Required Dependencies:** * [Fabric API](https://modrinth.com/mod/fabric-api)
+    * [Cloth Config API](https://modrinth.com/mod/cloth-config)
+    * [Mod Menu](https://modrinth.com/mod/modmenu) (Recommended for configuration)
+
+### Steps
+1. Download the latest `.jar` from [Modrinth](https://modrinth.com/mod/inventory-overlay) or [CurseForge](https://www.curseforge.com/minecraft/mc-mods/inventory-overlay-hud).
+2. Place the file into your Minecraft `%appdata%/.minecraft/mods` folder.
+3. Launch the game using the Fabric profile.
+
+## Support
+If you encounter bugs or wish to contribute:
+* **Issue Tracker**: Report problems on our [GitHub Issues page](https://github.com/armaninyow/Inventory-Overlay/issues).
+* **Contributions**: Submit improvements via [Pull Requests](https://github.com/armaninyow/Inventory-Overlay/pulls).
+
+## Credits
+* **Author**: Armaninyow
+* **License**: Released under [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://www.youtube.com/watch?v=xvFZjo5PgG0)
+
