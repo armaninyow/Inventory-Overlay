@@ -1,36 +1,37 @@
 {
-  "schemaVersion": 1,
-  "id": "inventoryoverlay",
-  "version": "1.0.0",
-  "name": "Inventory Overlay",
-  "description": "Displays inventory on HUD",
-  "authors": [
-    "Armaninyow"
-  ],
-  "contact": {
-    "homepage": "https://github.com/armaninyow/Inventory-Overlay/",
-    "sources": "https://github.com/armaninyow/Inventory-Overlay/blob/main/src/main/java/com/armaninyow/inventoryoverlay/InventoryOverlay.java",
-    "issues": "https://github.com/armaninyow/Inventory-Overlay/issues"
-  },
-  "license": "MIT",
-  "icon": "assets/inventoryoverlay/icon.png",
-  "environment": "client",
-  "entrypoints": {
-    "main": [
-      "com.armaninyow.inventoryoverlay.InventoryOverlay"
-    ],
-    "client": [
-      "com.armaninyow.inventoryoverlay.OverlayRenderer"
-    ],
-    "modmenu": [
-      "com.armaninyow.inventoryoverlay.ModMenuIntegration"
-    ]
-  },
-  "depends": {
-    "fabricloader": ">=0.15.0",
-    "minecraft": "~1.21.10",
-    "fabric-api": "*",
-    "cloth-config": "*"
-  }
-
+	"schemaVersion": 1,
+	"id": "inventoryoverlay",
+	"version": "${version}",
+	"name": "Inventory Overlay",
+	"description": "Displays inventory on HUD",
+	"authors": [
+		"Armaninyow"
+	],
+	"contact": {
+		"homepage": "https://modrinth.com/mod/inventory-overlay",
+		"sources": "https://github.com/armaninyow/Inventory-Overlay",
+		"issues": "https://github.com/armaninyow/Inventory-Overlay/issues"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/inventoryoverlay/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.armaninyow.inventoryoverlay.InventoryOverlay"
+		],
+		"client": [
+			"com.armaninyow.inventoryoverlay.OverlayRenderer"
+		],
+		"modmenu": [
+			"com.armaninyow.inventoryoverlay.ModMenuIntegration"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.18.4",
+		"minecraft": "~1.21.10",
+		"java": ">=21",
+		"fabric-api": "*",
+		"cloth-config": "*",
+		"modmenu": "*"
+	}
 }
