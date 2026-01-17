@@ -25,9 +25,9 @@ Managing resources while adventuring or building can be tedious. This mod provid
 ### Prerequisites
 * **Minecraft:** 1.21.10
 * **Loader:** [Fabric Loader](https://fabricmc.net/use/installer/) (>=0.18.4)
-* **Required Dependencies:**
+* **Core Dependencies:**
     * [Fabric API](https://modrinth.com/mod/fabric-api)
-    * [Cloth Config API](https://modrinth.com/mod/cloth-config)
+    * [Cloth Config API](https://modrinth.com/mod/cloth-config) (Required for configuration)
     * [Mod Menu](https://modrinth.com/mod/modmenu) (Recommended for configuration)
 
 ### Steps
