@@ -56,8 +56,8 @@ Managing resources while adventuring or building can be tedious. This mod provid
   <summary></summary>
    
 If you encounter bugs or wish to contribute:
-* [Report any problems you find.](https://github.com/armaninyow/Inventory-Overlay/issues)
-* [Submit your improvements and code changes.](https://github.com/armaninyow/Inventory-Overlay/pulls)
+* [Report any problems you find.](https://github.com/armaninyow/Inventory-Overlay/discussions/categories/issues)
+* [Share your ideas for new features.](https://github.com/armaninyow/Inventory-Overlay/discussions/categories/suggestions)
 </details>
 
 ## Credits
