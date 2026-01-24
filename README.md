@@ -18,6 +18,7 @@ A lightweight mod that renders your inventory directly onto your HUD, allowing f
 * **Dynamic Offsets:** Fine-tune the exact position with X and Y pixel offsets.
 * **Adjustable Transparency:** Change the background opacity (0-100%) to ensure it doesn't block your view.
 * **Quick Toggle:** Instantly show or hide the overlay with a customizable hotkey (Default: `I`).
+* **Shine Animation:** Trigger a sleek 45° light sweep when items enter empty inventory slots.
 </details>
 
 ## Benefits
