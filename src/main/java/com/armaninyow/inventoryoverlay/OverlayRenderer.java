@@ -16,6 +16,9 @@ import net.minecraft.util.Identifier;
 import org.lwjgl.glfw.GLFW;
 import me.shedaniel.autoconfig.AutoConfig;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class OverlayRenderer implements ClientModInitializer {
 
 	private static final Identifier CONTAINER_TEXTURE = Identifier.of(InventoryOverlay.MOD_ID, "textures/gui/inventory_overlay.png");
@@ -27,6 +30,12 @@ public class OverlayRenderer implements ClientModInitializer {
 	private static final int SLOT_SPACING = SLOT_SIZE + GAP;
 
 	private static KeyBinding toggleKey;
+	
+	// Track item counts per slot to detect new items
+	private final Map<Integer, Integer> previousSlotCounts = new HashMap<>();
+	
+	// Shine effect renderer
+	private final ShineEffectRenderer shineRenderer = new ShineEffectRenderer();
 
 	@Override
 	public void onInitializeClient() {
@@ -50,11 +59,38 @@ public class OverlayRenderer implements ClientModInitializer {
 				config.overlayVisible = !config.overlayVisible;
 				AutoConfig.getConfigHolder(OverlayConfig.class).save();
 			}
+			
+			// Check for new items
+			checkForNewItems(client);
 		});
 
 		HudRenderCallback.EVENT.register((drawContext, renderTickCounter) -> {
 			renderOverlay(drawContext);
 		});
+	}
+	
+	private void checkForNewItems(MinecraftClient client) {
+		ClientPlayerEntity player = client.player;
+		if (player == null) return;
+		
+		// Check slots 9-35 (inventory rows, not hotbar)
+		for (int slotIndex = 9; slotIndex < 36; slotIndex++) {
+			ItemStack stack = player.getInventory().getStack(slotIndex);
+			int currentCount = stack.isEmpty() ? 0 : stack.getCount();
+			int previousCount = previousSlotCounts.getOrDefault(slotIndex, 0);
+			
+			// New item detected: slot was empty and now has items
+			if (previousCount == 0 && currentCount > 0) {
+				// Start shine animation for this slot
+				OverlayConfig config = OverlayConfig.get();
+				if (config.shineEffectEnabled) {
+					shineRenderer.startShineAnimation(slotIndex);
+				}
+			}
+			
+			// Update tracking
+			previousSlotCounts.put(slotIndex, currentCount);
+		}
 	}
 
 	private void renderOverlay(DrawContext context) {
@@ -107,6 +143,20 @@ public class OverlayRenderer implements ClientModInitializer {
 				}
 			}
 		}
+		
+		// Render shine effects AFTER items (so they appear on top)
+		for (int row = 0; row < 3; row++) {
+			for (int col = 0; col < 9; col++) {
+				int slotIndex = 9 + (row * 9) + col;
+				int itemX = startX + (col * SLOT_SPACING);
+				int itemY = startY + (row * SLOT_SPACING);
+				
+				shineRenderer.renderShine(context, slotIndex, itemX, itemY);
+			}
+		}
+		
+		// Clean up completed animations
+		shineRenderer.cleanupCompletedAnimations();
 	}
 
 	private int calculateX(int screenWidth, OverlayConfig config) {

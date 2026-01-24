@@ -23,6 +23,9 @@ public class OverlayConfig implements ConfigData {
 	
 	// Overlay visibility toggle
 	public boolean overlayVisible = true;
+	
+	// Shine effect toggle
+	public boolean shineEffectEnabled = true;
 
 	// Helper to get static instance
 	public static OverlayConfig get() {

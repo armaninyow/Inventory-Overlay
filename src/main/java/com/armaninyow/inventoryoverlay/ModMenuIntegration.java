@@ -64,6 +64,15 @@ public class ModMenuIntegration implements ModMenuApi {
 					.setDefaultValue(75)
 					.setSaveConsumer(newValue -> config.containerAlphaPercent = newValue)
 					.build());
+			
+			// Shine Effect Toggle
+			general.addEntry(entryBuilder.startBooleanToggle(
+					Text.literal("Shine Effect"),
+					config.shineEffectEnabled)
+					.setDefaultValue(true)
+					.setTooltip(Text.literal("Enables a 45° white line animation when new items enter empty slots"))
+					.setSaveConsumer(newValue -> config.shineEffectEnabled = newValue)
+					.build());
 
 			builder.setSavingRunnable(() -> AutoConfig.getConfigHolder(OverlayConfig.class).save());
 
