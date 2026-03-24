@@ -1,5 +1,4 @@
 {
-  "key.category.inventoryoverlay.inventory_overlay": "Inventory Overlay",
-  "key.inventoryoverlay.toggle": "Toggle Inventory Overlay"
+	"key.category.inventoryoverlay.inventory_overlay": "Inventory Overlay",
+	"key.inventoryoverlay.toggle": "Toggle Inventory Overlay"
 }
-
