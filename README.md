@@ -1,71 +1,36 @@
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://www.youtube.com/watch?v=xvFZjo5PgG0)
 
 # Inventory Overlay
-<details>
-  <summary></summary>
-   
-A lightweight mod that renders your inventory directly onto your HUD, allowing for real-time item tracking without the need to pause or open a menu screen.
-</details>
 
-![Mod Icon](src/main/resources/assets/inventoryoverlay/icon.png)
-
-## Functionality
-<details>
-  <summary></summary>
-   
-* **Real-time HUD Display:** View all 27 slots of your main inventory (excluding hotbar) directly on your screen.
-* **Custom Positioning:** Use the built-in anchor system to snap the overlay to the corners or center of your screen.
-* **Dynamic Offsets:** Fine-tune the exact position with X and Y pixel offsets.
-* **Adjustable Transparency:** Change the background opacity (0-100%) to ensure it doesn't block your view.
-* **Quick Toggle:** Instantly show or hide the overlay with a customizable hotkey (Default: `I`).
-* **Shine Animation:** Trigger a sleek 45° light sweep when items enter empty inventory slots.
-</details>
-
-## Benefits
-<details>
-  <summary></summary>
-   
-Managing resources while adventuring or building can be tedious. This mod provides several key benefits:
-
-* **Efficiency:** Monitor block counts and resource levels while actively mining or building.
-* **Safety:** Keep an eye on your inventory while in combat or dangerous areas where opening a full-screen GUI would leave you vulnerable.
-* **Highly Customizable:** Whether you want a faint ghost-overlay in the corner or a solid display in the center, the configuration fits your playstyle.
-* **Vanilla Feel:** Uses standard Minecraft item rendering and GUI textures to blend perfectly with the game's aesthetic.
-</details>
+![Mod Icon](common/src/main/resources/assets/inventoryoverlay/icon.png)
 
 ## Installation
-<details>
-  <summary></summary>
-   
-### Prerequisites
-* **Minecraft:** 1.21.10
-* **Loader:** [Fabric Loader](https://fabricmc.net/use/installer/) (>=0.18.4)
-* **Core Dependencies:**
-    * [Fabric API](https://modrinth.com/mod/fabric-api)
-    * [Cloth Config API](https://modrinth.com/mod/cloth-config) (Required for configuration)
-    * [Mod Menu](https://modrinth.com/mod/modmenu) (Recommended for configuration)
-
-### Steps
-1. Download the latest `.jar` from [Modrinth](https://modrinth.com/mod/inventory-overlay) or [CurseForge](https://www.curseforge.com/minecraft/mc-mods/inventory-overlay-hud).
-2. Move the file into your Minecraft `%appdata%/.minecraft/mods` folder.
-3. Launch the game using the Fabric profile.
-</details>
+* [Modrinth](https://modrinth.com/mod/inventory-overlay)
+* [CurseForge](https://www.curseforge.com/minecraft/mc-mods/inventory-overlay-hud)
 
 ## Support
-<details>
-  <summary></summary>
    
 If you encounter bugs or wish to contribute:
 * [Report any problems you find.](https://github.com/armaninyow/Inventory-Overlay/discussions/categories/issues)
 * [Share your ideas for new features.](https://github.com/armaninyow/Inventory-Overlay/discussions/categories/suggestions)
-</details>
 
-## Credits
+## Changelog
 <details>
   <summary></summary>
    
-* **Author**: Armaninyow
-* **License**: Released under [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+### 3.0.0—1.21.x
+* Added multi-version support covering Minecraft 1.21 through 1.21.11
+### 2.0.0—1.21.11
+* Updated to Minecraft 1.21.11
+### 1.2.0—1.21.10
+* Added Shine Effect Animation, a new visual effect that triggers when items enter empty inventory slots
+* Enabled by default in ModMenu
+### 1.1.0—1.21.10
+* Refreshed Mod Icon
+* Updated all core build properties to match the 1.21.10 environment: (Fabric Loader: 0.18.4, Yarn Mappings: 1.21.10+build.3, Fabric Loom: 1.14-SNAPSHOT, Cloth Config API: 20.0.149, ModMenu: 16.0.0)
+* Performed a global cleanup of the codebase across all Java files to strictly adhere to the official FabricMC formatting and naming conventions
+### 1.0.0—1.21.10
+* Initial Release
 </details>
 
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://www.youtube.com/watch?v=xvFZjo5PgG0)
