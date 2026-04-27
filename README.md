@@ -18,6 +18,11 @@ If you encounter bugs or wish to contribute:
 <details>
   <summary></summary>
    
+### 3.1.0—1.21.x
+* Split 1.21.5-1.21.11 into three separate version ranges to account for API differences across minor versions
+* Merged 1.21.2-1.21.5 into a single version range due to shared rendering API compatibility
+* Fixed a crash on 1.21.5 caused by a rendering API that was not available until 1.21.6
+* Fixed a crash on 1.21.6–1.21.8 caused by a keybinding API that was not available until 1.21.9
 ### 3.0.0—1.21.x
 * Added multi-version support covering Minecraft 1.21 through 1.21.11
 ### 2.0.0—1.21.11
