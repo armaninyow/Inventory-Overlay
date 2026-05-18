@@ -1,4 +1,36 @@
 {
-	"key.category.inventoryoverlay.inventory_overlay": "Inventory Overlay",
-	"key.inventoryoverlay.toggle": "Toggle Inventory Overlay"
+    "key.category.inventoryoverlay.inventory_overlay": "Inventory Overlay",
+    "key.inventoryoverlay.toggle": "Toggle Inventory Overlay",
+
+    "inventoryoverlay.config.title": "Inventory Overlay Config",
+    "inventoryoverlay.config.category.general": "General",
+
+    "inventoryoverlay.config.horizontalAnchor": "Horizontal Anchor",
+    "inventoryoverlay.config.horizontalAnchor.tooltip": "The horizontal edge of the screen the overlay is anchored to.",
+    "inventoryoverlay.config.horizontalAnchor.LEFT": "Left",
+    "inventoryoverlay.config.horizontalAnchor.CENTER": "Center",
+    "inventoryoverlay.config.horizontalAnchor.RIGHT": "Right",
+
+    "inventoryoverlay.config.verticalAnchor": "Vertical Anchor",
+    "inventoryoverlay.config.verticalAnchor.tooltip": "The vertical edge of the screen the overlay is anchored to.",
+    "inventoryoverlay.config.verticalAnchor.TOP": "Top",
+    "inventoryoverlay.config.verticalAnchor.CENTER": "Center",
+    "inventoryoverlay.config.verticalAnchor.BOTTOM": "Bottom",
+
+    "inventoryoverlay.config.xOffset": "X Offset",
+    "inventoryoverlay.config.xOffset.tooltip": "Horizontal offset from the anchor point in pixels.\n\nRange: -500 to 500",
+
+    "inventoryoverlay.config.yOffset": "Y Offset",
+    "inventoryoverlay.config.yOffset.tooltip": "Vertical offset from the anchor point in pixels.\n\nRange: -500 to 500",
+
+    "inventoryoverlay.config.containerAlphaPercent": "Container Alpha %",
+    "inventoryoverlay.config.containerAlphaPercent.tooltip": "Transparency of the overlay background.\n\n0% = fully transparent\n100% = fully opaque",
+
+    "inventoryoverlay.config.shineEffectEnabled": "Shine Effect",
+    "inventoryoverlay.config.shineEffectEnabled.tooltip": "Enables a 45° white line animation when new items enter empty slots.",
+
+    "inventoryoverlay.config.textureMode": "Texture Mode",
+    "inventoryoverlay.config.textureMode.tooltip": "Vanilla uses the base game texture.\n\nResource Pack uses the active resource pack.",
+    "inventoryoverlay.config.textureMode.VANILLA": "Vanilla",
+    "inventoryoverlay.config.textureMode.RESOURCEPACK": "Resource Pack"
 }

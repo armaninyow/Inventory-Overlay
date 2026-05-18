@@ -1,38 +1,47 @@
 package com.armaninyow.inventoryoverlay;
 
-import me.shedaniel.autoconfig.AutoConfig;
-import me.shedaniel.autoconfig.ConfigData;
-import me.shedaniel.autoconfig.annotation.Config;
-import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
+import dev.isxander.yacl3.config.v2.api.ConfigClassHandler;
+import dev.isxander.yacl3.config.v2.api.SerialEntry;
+import dev.isxander.yacl3.config.v2.api.serializer.GsonConfigSerializerBuilder;
+import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.resources.Identifier;
 
-@Config(name = "inventoryoverlay")
-public class OverlayConfig implements ConfigData {
+public class OverlayConfig {
 
-	// Enums for Anchors
+	public static final ConfigClassHandler<OverlayConfig> HANDLER = ConfigClassHandler.createBuilder(OverlayConfig.class)
+			.id(Identifier.fromNamespaceAndPath(InventoryOverlay.MOD_ID, "config"))
+			.serializer(config -> GsonConfigSerializerBuilder.create(config)
+					.setPath(FabricLoader.getInstance().getConfigDir().resolve("inventoryoverlay.json"))
+					.build())
+			.build();
+
 	public enum HAnchor { LEFT, CENTER, RIGHT }
 	public enum VAnchor { TOP, CENTER, BOTTOM }
+	public enum TextureMode { VANILLA, RESOURCEPACK }
 
-	public HAnchor horizontalAnchor = HAnchor.RIGHT;
-	public VAnchor verticalAnchor = VAnchor.CENTER;
+	@SerialEntry public HAnchor horizontalAnchor = HAnchor.RIGHT;
+	@SerialEntry public VAnchor verticalAnchor = VAnchor.CENTER;
 
-	public int xOffset = -10;
-	public int yOffset = 0;
+	@SerialEntry public int xOffset = -10;
+	@SerialEntry public int yOffset = 0;
 
-	// Alpha 0.0 to 1.0 (float), but user asked for 0-100% representation in GUI
-	public int containerAlphaPercent = 75;
-	
-	// Overlay visibility toggle
-	public boolean overlayVisible = true;
-	
-	// Shine effect toggle
-	public boolean shineEffectEnabled = true;
+	@SerialEntry public int containerAlphaPercent = 75;
 
-	// Helper to get static instance
+	@SerialEntry public boolean overlayVisible = true;
+
+	@SerialEntry public boolean shineEffectEnabled = true;
+
+	@SerialEntry public TextureMode textureMode = TextureMode.VANILLA;
+
 	public static OverlayConfig get() {
-		return AutoConfig.getConfigHolder(OverlayConfig.class).getConfig();
+		return HANDLER.instance();
 	}
 
 	public static void register() {
-		AutoConfig.register(OverlayConfig.class, GsonConfigSerializer::new);
+		HANDLER.load();
+	}
+
+	public void save() {
+		HANDLER.save();
 	}
 }

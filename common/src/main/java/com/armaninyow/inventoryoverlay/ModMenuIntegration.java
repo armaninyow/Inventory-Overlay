@@ -2,81 +2,90 @@ package com.armaninyow.inventoryoverlay;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
-import me.shedaniel.autoconfig.AutoConfig;
-import me.shedaniel.clothconfig2.api.ConfigBuilder;
-import me.shedaniel.clothconfig2.api.ConfigCategory;
-import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
-import net.minecraft.text.Text;
+import dev.isxander.yacl3.api.*;
+import dev.isxander.yacl3.api.controller.*;
+import net.minecraft.network.chat.Component;
 
 public class ModMenuIntegration implements ModMenuApi {
 
 	@Override
 	public ConfigScreenFactory<?> getModConfigScreenFactory() {
 		return parent -> {
-			ConfigBuilder builder = ConfigBuilder.create()
-					.setParentScreen(parent)
-					.setTitle(Text.literal("Inventory Overlay Config"));
-
 			OverlayConfig config = OverlayConfig.get();
-			ConfigEntryBuilder entryBuilder = builder.entryBuilder();
-			ConfigCategory general = builder.getOrCreateCategory(Text.literal("General"));
 
-			// Horizontal Anchor
-			general.addEntry(entryBuilder.startEnumSelector(
-					Text.literal("Horizontal Anchor"),
-					OverlayConfig.HAnchor.class,
-					config.horizontalAnchor)
-					.setDefaultValue(OverlayConfig.HAnchor.RIGHT)
-					.setSaveConsumer(newValue -> config.horizontalAnchor = newValue)
-					.build());
+			return YetAnotherConfigLib.createBuilder()
+					.title(Component.translatable("inventoryoverlay.config.title"))
+					.category(ConfigCategory.createBuilder()
+							.name(Component.translatable("inventoryoverlay.config.category.general"))
 
-			// Vertical Anchor
-			general.addEntry(entryBuilder.startEnumSelector(
-					Text.literal("Vertical Anchor"),
-					OverlayConfig.VAnchor.class,
-					config.verticalAnchor)
-					.setDefaultValue(OverlayConfig.VAnchor.CENTER)
-					.setSaveConsumer(newValue -> config.verticalAnchor = newValue)
-					.build());
+							// Horizontal Anchor
+							.option(Option.<OverlayConfig.HAnchor>createBuilder()
+									.name(Component.translatable("inventoryoverlay.config.horizontalAnchor"))
+									.description(OptionDescription.of(Component.translatable("inventoryoverlay.config.horizontalAnchor.tooltip")))
+									.binding(OverlayConfig.HAnchor.RIGHT, () -> config.horizontalAnchor, v -> config.horizontalAnchor = v)
+									.controller(opt -> EnumControllerBuilder.create(opt)
+											.enumClass(OverlayConfig.HAnchor.class)
+											.formatValue(v -> Component.translatable("inventoryoverlay.config.horizontalAnchor." + v.name())))
+									.build())
 
-			// X Offset
-			general.addEntry(entryBuilder.startIntField(
-					Text.literal("X Offset"),
-					config.xOffset)
-					.setDefaultValue(-10)
-					.setMin(-500).setMax(500)
-					.setSaveConsumer(newValue -> config.xOffset = newValue)
-					.build());
+							// Vertical Anchor
+							.option(Option.<OverlayConfig.VAnchor>createBuilder()
+									.name(Component.translatable("inventoryoverlay.config.verticalAnchor"))
+									.description(OptionDescription.of(Component.translatable("inventoryoverlay.config.verticalAnchor.tooltip")))
+									.binding(OverlayConfig.VAnchor.CENTER, () -> config.verticalAnchor, v -> config.verticalAnchor = v)
+									.controller(opt -> EnumControllerBuilder.create(opt)
+											.enumClass(OverlayConfig.VAnchor.class)
+											.formatValue(v -> Component.translatable("inventoryoverlay.config.verticalAnchor." + v.name())))
+									.build())
 
-			// Y Offset
-			general.addEntry(entryBuilder.startIntField(
-					Text.literal("Y Offset"),
-					config.yOffset)
-					.setDefaultValue(0)
-					.setMin(-500).setMax(500)
-					.setSaveConsumer(newValue -> config.yOffset = newValue)
-					.build());
+							// X Offset
+							.option(Option.<Integer>createBuilder()
+									.name(Component.translatable("inventoryoverlay.config.xOffset"))
+									.description(OptionDescription.of(Component.translatable("inventoryoverlay.config.xOffset.tooltip")))
+									.binding(-10, () -> config.xOffset, v -> config.xOffset = v)
+									.controller(opt -> IntegerFieldControllerBuilder.create(opt).range(-500, 500))
+									.build())
 
-			// Transparency
-			general.addEntry(entryBuilder.startIntSlider(
-					Text.literal("Container Alpha %"),
-					config.containerAlphaPercent, 0, 100)
-					.setDefaultValue(75)
-					.setSaveConsumer(newValue -> config.containerAlphaPercent = newValue)
-					.build());
-			
-			// Shine Effect Toggle
-			general.addEntry(entryBuilder.startBooleanToggle(
-					Text.literal("Shine Effect"),
-					config.shineEffectEnabled)
-					.setDefaultValue(true)
-					.setTooltip(Text.literal("Enables a 45° white line animation when new items enter empty slots"))
-					.setSaveConsumer(newValue -> config.shineEffectEnabled = newValue)
-					.build());
+							// Y Offset
+							.option(Option.<Integer>createBuilder()
+									.name(Component.translatable("inventoryoverlay.config.yOffset"))
+									.description(OptionDescription.of(Component.translatable("inventoryoverlay.config.yOffset.tooltip")))
+									.binding(0, () -> config.yOffset, v -> config.yOffset = v)
+									.controller(opt -> IntegerFieldControllerBuilder.create(opt).range(-500, 500))
+									.build())
 
-			builder.setSavingRunnable(() -> AutoConfig.getConfigHolder(OverlayConfig.class).save());
+							// Container Alpha %
+							.option(Option.<Integer>createBuilder()
+									.name(Component.translatable("inventoryoverlay.config.containerAlphaPercent"))
+									.description(OptionDescription.of(Component.translatable("inventoryoverlay.config.containerAlphaPercent.tooltip")))
+									.binding(75, () -> config.containerAlphaPercent, v -> config.containerAlphaPercent = v)
+									.controller(opt -> IntegerSliderControllerBuilder.create(opt).range(0, 100).step(1))
+									.build())
 
-			return builder.build();
+							// Shine Effect
+							.option(Option.<Boolean>createBuilder()
+									.name(Component.translatable("inventoryoverlay.config.shineEffectEnabled"))
+									.description(OptionDescription.of(Component.translatable("inventoryoverlay.config.shineEffectEnabled.tooltip")))
+									.binding(true, () -> config.shineEffectEnabled, v -> config.shineEffectEnabled = v)
+									.controller(opt -> BooleanControllerBuilder.create(opt).yesNoFormatter())
+									.build())
+
+							// Texture Mode
+							.option(Option.<OverlayConfig.TextureMode>createBuilder()
+									.name(Component.translatable("inventoryoverlay.config.textureMode"))
+									.description(OptionDescription.of(Component.translatable("inventoryoverlay.config.textureMode.tooltip")))
+									.binding(OverlayConfig.TextureMode.VANILLA, () -> config.textureMode, v -> {
+										config.textureMode = v;
+										HotbarOverlayTexture.load(v);
+									})
+									.controller(opt -> EnumControllerBuilder.create(opt)
+											.enumClass(OverlayConfig.TextureMode.class)
+											.formatValue(v -> Component.translatable("inventoryoverlay.config.textureMode." + v.name())))
+									.build())
+
+							.build())
+					.save(() -> OverlayConfig.get().save())
+					.build().generateScreen(parent);
 		};
 	}
 }
