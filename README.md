@@ -18,6 +18,10 @@ If you encounter bugs or wish to contribute:
 <details>
   <summary></summary>
    
+### 4.0.0—26.x
+* Added support for Minecraft 26.1, 26.1.1, and 26.1.2
+* Replaced Cloth Config with YetAnotherConfigLib (YACL) 3.9.3 for the in-game config screen
+* Replaced the static inventory overlay texture with one dynamically generated from the active resource pack's hotbar sprite, with a Vanilla/Resource Pack toggle in the config
 ### 3.1.0—1.21.x
 * Split 1.21.5-1.21.11 into three separate version ranges to account for API differences across minor versions
 * Merged 1.21.2-1.21.5 into a single version range due to shared rendering API compatibility
