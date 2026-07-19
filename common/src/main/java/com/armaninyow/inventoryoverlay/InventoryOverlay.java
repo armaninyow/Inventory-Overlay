@@ -11,7 +11,6 @@ public class InventoryOverlay implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		// Configuration is loaded lazily when accessed
 		LOGGER.info("Inventory Overlay initialized.");
 	}
 }

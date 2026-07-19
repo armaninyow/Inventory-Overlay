@@ -17,12 +17,11 @@ public class HotbarOverlayTexture {
 
 	public static final Identifier TEXTURE_ID = Identifier.fromNamespaceAndPath(InventoryOverlay.MOD_ID, "textures/gui/inventory_overlay_dynamic");
 
-	// Cropped: 182->180, 22->20
 	private static final int CROPPED_W = 180;
 	private static final int CROPPED_H = 20;
 
-	public static final int TEX_WIDTH = CROPPED_W;   // 180
-	public static final int TEX_HEIGHT = CROPPED_H * 3; // 60
+	public static final int TEX_WIDTH = CROPPED_W;
+	public static final int TEX_HEIGHT = CROPPED_H * 3;
 
 	private static DynamicTexture dynamicTexture;
 	private static boolean registered = false;
@@ -47,7 +46,6 @@ public class HotbarOverlayTexture {
 				hotbar = NativeImage.read(stream);
 			}
 
-			// 180x60: crop hotbar to 180x20 (skip first/last col and row), stack 3 times
 			NativeImage result = new NativeImage(TEX_WIDTH, TEX_HEIGHT, false);
 
 			for (int row = 0; row < 3; row++) {
@@ -61,12 +59,11 @@ public class HotbarOverlayTexture {
 
 			hotbar.close();
 
-			// Remove 1 pixel from each of the 4 outer corners of the 180x60 block
 			int transparent = 0x00000000;
-			result.setPixel(0, 0, transparent);                         // top-left
-			result.setPixel(TEX_WIDTH - 1, 0, transparent);            // top-right
-			result.setPixel(0, TEX_HEIGHT - 1, transparent);           // bottom-left
-			result.setPixel(TEX_WIDTH - 1, TEX_HEIGHT - 1, transparent); // bottom-right
+			result.setPixel(0, 0, transparent);
+			result.setPixel(TEX_WIDTH - 1, 0, transparent);
+			result.setPixel(0, TEX_HEIGHT - 1, transparent);
+			result.setPixel(TEX_WIDTH - 1, TEX_HEIGHT - 1, transparent);
 
 			if (dynamicTexture != null) {
 				dynamicTexture.setPixels(result);

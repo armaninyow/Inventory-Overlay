@@ -18,7 +18,6 @@ public class ModMenuIntegration implements ModMenuApi {
 					.category(ConfigCategory.createBuilder()
 							.name(Component.translatable("inventoryoverlay.config.category.general"))
 
-							// Horizontal Anchor
 							.option(Option.<OverlayConfig.HAnchor>createBuilder()
 									.name(Component.translatable("inventoryoverlay.config.horizontalAnchor"))
 									.description(OptionDescription.of(Component.translatable("inventoryoverlay.config.horizontalAnchor.tooltip")))
@@ -28,7 +27,6 @@ public class ModMenuIntegration implements ModMenuApi {
 											.formatValue(v -> Component.translatable("inventoryoverlay.config.horizontalAnchor." + v.name())))
 									.build())
 
-							// Vertical Anchor
 							.option(Option.<OverlayConfig.VAnchor>createBuilder()
 									.name(Component.translatable("inventoryoverlay.config.verticalAnchor"))
 									.description(OptionDescription.of(Component.translatable("inventoryoverlay.config.verticalAnchor.tooltip")))
@@ -38,7 +36,6 @@ public class ModMenuIntegration implements ModMenuApi {
 											.formatValue(v -> Component.translatable("inventoryoverlay.config.verticalAnchor." + v.name())))
 									.build())
 
-							// X Offset
 							.option(Option.<Integer>createBuilder()
 									.name(Component.translatable("inventoryoverlay.config.xOffset"))
 									.description(OptionDescription.of(Component.translatable("inventoryoverlay.config.xOffset.tooltip")))
@@ -46,7 +43,6 @@ public class ModMenuIntegration implements ModMenuApi {
 									.controller(opt -> IntegerFieldControllerBuilder.create(opt).range(-500, 500))
 									.build())
 
-							// Y Offset
 							.option(Option.<Integer>createBuilder()
 									.name(Component.translatable("inventoryoverlay.config.yOffset"))
 									.description(OptionDescription.of(Component.translatable("inventoryoverlay.config.yOffset.tooltip")))
@@ -54,7 +50,6 @@ public class ModMenuIntegration implements ModMenuApi {
 									.controller(opt -> IntegerFieldControllerBuilder.create(opt).range(-500, 500))
 									.build())
 
-							// Container Alpha %
 							.option(Option.<Integer>createBuilder()
 									.name(Component.translatable("inventoryoverlay.config.containerAlphaPercent"))
 									.description(OptionDescription.of(Component.translatable("inventoryoverlay.config.containerAlphaPercent.tooltip")))
@@ -62,19 +57,17 @@ public class ModMenuIntegration implements ModMenuApi {
 									.controller(opt -> IntegerSliderControllerBuilder.create(opt).range(0, 100).step(1))
 									.build())
 
-							// Shine Effect
 							.option(Option.<Boolean>createBuilder()
-									.name(Component.translatable("inventoryoverlay.config.shineEffectEnabled"))
-									.description(OptionDescription.of(Component.translatable("inventoryoverlay.config.shineEffectEnabled.tooltip")))
-									.binding(true, () -> config.shineEffectEnabled, v -> config.shineEffectEnabled = v)
+									.name(Component.translatable("inventoryoverlay.config.wipeEffectEnabled"))
+									.description(OptionDescription.of(Component.translatable("inventoryoverlay.config.wipeEffectEnabled.tooltip")))
+									.binding(true, () -> config.wipeEffectEnabled, v -> config.wipeEffectEnabled = v)
 									.controller(opt -> BooleanControllerBuilder.create(opt).yesNoFormatter())
 									.build())
 
-							// Texture Mode
 							.option(Option.<OverlayConfig.TextureMode>createBuilder()
 									.name(Component.translatable("inventoryoverlay.config.textureMode"))
 									.description(OptionDescription.of(Component.translatable("inventoryoverlay.config.textureMode.tooltip")))
-									.binding(OverlayConfig.TextureMode.VANILLA, () -> config.textureMode, v -> {
+									.binding(OverlayConfig.TextureMode.CUSTOM, () -> config.textureMode, v -> {
 										config.textureMode = v;
 										HotbarOverlayTexture.load(v);
 									})

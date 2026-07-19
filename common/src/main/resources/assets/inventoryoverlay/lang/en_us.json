@@ -26,11 +26,11 @@
     "inventoryoverlay.config.containerAlphaPercent": "Container Alpha %",
     "inventoryoverlay.config.containerAlphaPercent.tooltip": "Transparency of the overlay background.\n\n0% = fully transparent\n100% = fully opaque",
 
-    "inventoryoverlay.config.shineEffectEnabled": "Shine Effect",
-    "inventoryoverlay.config.shineEffectEnabled.tooltip": "Enables a 45° white line animation when new items enter empty slots.",
+    "inventoryoverlay.config.wipeEffectEnabled": "Wipe Effect",
+    "inventoryoverlay.config.wipeEffectEnabled.tooltip": "Enables a wipe animation when new items enter empty slots.",
 
     "inventoryoverlay.config.textureMode": "Texture Mode",
-    "inventoryoverlay.config.textureMode.tooltip": "Vanilla uses the base game texture.\n\nResource Pack uses the active resource pack.",
+    "inventoryoverlay.config.textureMode.tooltip": "Vanilla uses the base game texture.\n\nCustom uses the active resource pack.",
     "inventoryoverlay.config.textureMode.VANILLA": "Vanilla",
-    "inventoryoverlay.config.textureMode.RESOURCEPACK": "Resource Pack"
+    "inventoryoverlay.config.textureMode.CUSTOM": "Custom"
 }

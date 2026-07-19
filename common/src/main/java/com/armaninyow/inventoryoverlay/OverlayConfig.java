@@ -17,7 +17,7 @@ public class OverlayConfig {
 
 	public enum HAnchor { LEFT, CENTER, RIGHT }
 	public enum VAnchor { TOP, CENTER, BOTTOM }
-	public enum TextureMode { VANILLA, RESOURCEPACK }
+	public enum TextureMode { VANILLA, CUSTOM }
 
 	@SerialEntry public HAnchor horizontalAnchor = HAnchor.RIGHT;
 	@SerialEntry public VAnchor verticalAnchor = VAnchor.CENTER;
@@ -29,7 +29,7 @@ public class OverlayConfig {
 
 	@SerialEntry public boolean overlayVisible = true;
 
-	@SerialEntry public boolean shineEffectEnabled = true;
+	@SerialEntry public boolean wipeEffectEnabled = true;
 
 	@SerialEntry public TextureMode textureMode = TextureMode.VANILLA;
 
